@@ -8,7 +8,7 @@ function do_sync() {
 		--exclude "README.md" \
 		--exclude "LICENSE.md" \
 		-avhP --no-perms . ~;
-	source ~/.bashrc
+	source ~/.bashrc;
 }
 
 do_sync;
