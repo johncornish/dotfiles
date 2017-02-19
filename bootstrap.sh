@@ -9,7 +9,7 @@ function do_sync() {
 			--exclude "bootstrap.sh" \
 			--exclude "README.md" \
 			--exclude "LICENSE.md" \
-			-avhP --no-perms $profile ~;
+			-avhP --no-perms $profile/* ~;
 	done
 	source ~/.bashrc;
 }
