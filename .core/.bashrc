@@ -129,7 +129,7 @@ alias rstart='bin/rails server'
 alias cldown="rm -r $HOME/Downloads/*"
 
 function mkproj() {
-    templ_path="$HOME/.proj_templates"
+    templ_path="$HOME/project_templates"
 
     [[ $# == 0 ]] && templ="cpp" || templ=$1
 
