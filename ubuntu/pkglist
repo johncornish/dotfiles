@@ -2,5 +2,6 @@ i3
 ghc
 vim
 atom
+xclip
 texstudio
 cabal-install
