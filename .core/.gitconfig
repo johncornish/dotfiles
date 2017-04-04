@@ -4,4 +4,7 @@
 
 [alias]
 	s = status
-	p = !"git add .; git commit -m $1 && git push origin master"
+  p = !"git add .; git commit -m $1 && git push origin master"
+
+[push]
+  default = matching
