@@ -88,7 +88,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -lAhtr'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -119,23 +119,11 @@ fi
 export PATH="$HOME/bin:$PATH"
 export EDITOR='vim'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
+if -d .bash_scripts
+  for s in $(ls $HOME/.bash_scripts);
+    do source $s
+  done
+fi
 
 # Custom functions and aliases
-alias rstart='bin/rails server'
-alias cldown="rm -r $HOME/Downloads/*"
-
-function mkproj() {
-    templ_path="$HOME/project_templates"
-
-    [[ $# == 0 ]] && templ="cpp" || templ=$1
-
-    if [[ -d $templ_path/$templ ]]; then
-        cp -r $templ_path/$templ/* ./
-    else
-        echo "Template $1 does not exist."
-    fi
-}
+#alias cldown="rm -r $HOME/Downloads/*"
