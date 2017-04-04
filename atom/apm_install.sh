@@ -1,2 +1,2 @@
 #! /bin/bash
-apm install --packages-list aplist
+apm install $(cat aplist)
