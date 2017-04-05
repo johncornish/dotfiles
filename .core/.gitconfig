@@ -5,6 +5,8 @@
 [alias]
 	s = status
   p = !"git add .; git commit -m $1 && git push origin master"
+	c = clone
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 [push]
   default = matching
