@@ -119,11 +119,8 @@ fi
 export PATH="$HOME/bin:$PATH"
 export EDITOR='vim'
 
-if -d .bash_scripts
-  for s in $(ls $HOME/.bash_scripts);
+if -d .bash_mods
+  for s in $(ls $HOME/.bash_mods);
     do source $s
   done
 fi
-
-# Custom functions and aliases
-#alias cldown="rm -r $HOME/Downloads/*"
