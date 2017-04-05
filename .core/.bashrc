@@ -119,7 +119,7 @@ fi
 export PATH="$HOME/bin:$PATH"
 export EDITOR='vim'
 
-if -d .bash_mods
+if [ -d .bash_mods ]; then
   for s in $(ls $HOME/.bash_mods);
     do source $s
   done
