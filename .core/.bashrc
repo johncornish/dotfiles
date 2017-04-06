@@ -121,6 +121,6 @@ export EDITOR='vim'
 
 if [ -d .bash_mods ]; then
   for s in $(ls $HOME/.bash_mods);
-    do source $s
+    do source $HOME/.bash_mods/$s
   done
 fi
