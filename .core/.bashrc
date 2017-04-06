@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$PATH:/sbin"
 export EDITOR='vim'
 
 if [ -d .bash_mods ]; then
