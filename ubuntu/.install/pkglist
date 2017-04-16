@@ -3,6 +3,7 @@ ghc
 vim
 atom
 xclip
+python3-pip
 taskwarrior
 texstudio
 cabal-install
