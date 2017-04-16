@@ -158,12 +158,12 @@ bar {
 
 workspace_layout stacking
 
-assign [class="Sublime_text"] 1
-assign [class="google-chrome"] 2
+<!-- assign [class="Sublime_text"] 1 -->
+<!-- assign [class="google-chrome"] 2 -->
 
 bindsym $mod+i exec --no-startup-id i3lock
 bindsym $mod+n exec --no-startup-id google-chrome
-bindsym $mod+m exec --no-startup-id subl
+bindsym $mod+m exec --no-startup-id atom
 bindsym $mod+g exec --no-startup-id gitkraken
 
 exec --no-startup-id xsetroot -solid "#000000"
