@@ -5,7 +5,7 @@ function taskint() {
         clear
         $ui
         read input
-        task $input
+        [ $input != 'q' ] && task $input
     done
 }
 
