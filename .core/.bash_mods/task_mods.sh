@@ -1,11 +1,11 @@
 function taskint() {
-    ui="task list $@"
+    ui="task $@"
     input=''
     while [[ $input != 'q' ]]; do
         clear
         $ui
         read input
-        [ $input != 'q' ] && task $input
+        [ "$input" != 'q' ] && task $input
     done
 }
 
