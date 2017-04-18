@@ -33,6 +33,8 @@ alias.ls=list
 alias.aa=add
 alias.mo=modify
 alias.sy=sync
+alias.td=list +TODAY
+
 taskd.certificate=~/.task/client.cert.pem
 taskd.key=~/.task/client.key.pem
 taskd.ca=~/.task/ca.cert.pem
