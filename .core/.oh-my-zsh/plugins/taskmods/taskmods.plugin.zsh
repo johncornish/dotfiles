@@ -4,7 +4,9 @@ taskint() {
     clear
     task $@
     read input
-    [ "$input" != 'q' ] && /usr/bin/task $input
+    if [[ "$input" != 'q' ]]; then
+      task $input
+    fi
   done
 }
 
