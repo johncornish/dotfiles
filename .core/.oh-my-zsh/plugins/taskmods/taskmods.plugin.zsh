@@ -1,15 +1,14 @@
-function taskint() {
-  ui="task $@"
+taskint() {
   input=''
   while [[ $input != 'q' ]]; do
     clear
-    $ui
+    task $@
     read input
-    [ "$input" != 'q' ] && task $input
+    [ "$input" != 'q' ] && /usr/bin/task $input
   done
 }
 
-function taskm() {
+taskm() {
   read input
   while [[ ! -z $input ]]; do
     task add $@ $input
@@ -17,11 +16,10 @@ function taskm() {
   done
 }
 
-function taskfile() {
-  op="task ${@:2}"
+taskfile() {
   if [ -f $1 ]; then
     while IFS= read -r t; do
-      $op "$t"
+      [[ ! -z $t ]] && task ${@:2} "$t"
     done < $1
   else
     echo "File does not exist"

@@ -51,15 +51,9 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git systemd cabal debian rails sudo taskwarrior web-search)
+plugins=(git systemd cabal debian rails sudo taskwarrior web-search cornishmods taskmods)
 
 source $ZSH/oh-my-zsh.sh
-
-if [ -d .zsh_mods ]; then
-  for s in $(ls $HOME/.zsh_mods);
-    do source $HOME/.zsh_mods/$s
-  done
-fi
 
 # User configuration
 
