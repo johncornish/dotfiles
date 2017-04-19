@@ -21,7 +21,7 @@ function taskfile() {
   op="task ${@:2}"
   if [ -f $1 ]; then
     while IFS= read -r t; do
-      $op $t
+      $op "$t"
     done < $1
   else
     echo "File does not exist"
