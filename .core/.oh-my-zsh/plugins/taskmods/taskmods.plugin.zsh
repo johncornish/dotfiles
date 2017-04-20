@@ -5,7 +5,7 @@ taskint() {
     task $@
     read input
     if [[ "$input" != 'q' ]]; then
-      task $input
+      task ${=input}
     fi
   done
 }
