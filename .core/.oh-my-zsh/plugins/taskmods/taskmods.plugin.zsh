@@ -1,6 +1,6 @@
 taskint() {
   input=''
-  while [[ $input != 'q' ]]; do
+  while [[ "$input" != 'q' ]]; do
     clear
     task $@
     read input
