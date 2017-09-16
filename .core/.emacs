@@ -1,5 +1,6 @@
 ;; General
 (require 'package)
+(package-initialize)
 
 (add-to-list 'package-archives
              '("melpa" . "http://stable.melpa.org/packages/") t)
@@ -58,7 +59,7 @@
 
 (setq org-log-into-drawer 1)
 (setq org-agenda-files (quote ("~/org/dev"
-			       "~/org")))
+			       "~/org/agenda")))
 (setq org-todo-keywords
        '((sequence "TODO(t)" "|" "DONE(d!)" "CANCELED(c@)")))
 
@@ -70,6 +71,25 @@
 	       "* TODO %?\n %i\n")
 	      ("j" "journal" entry (file+datetree "~/org/journal.org")
 	       "* Entered on %U\n %i\n%?\n"))))
+
+;; Refile
+(require 'hydra)
+(defun my-refile (file headline &optional arg)
+  (let ((pos (save-excursion
+               (find-file file)
+               (org-find-exact-headline-in-buffer headline))))
+    (org-refile arg nil (list headline file nil pos)))
+  (switch-to-buffer (current-buffer)))
+
+(defhydra hydra-refile (global-map "\C-cr")
+  "Refile"
+  ("c" (my-refile "~/org/agenda/class.org" "") "Refile to Class")
+  ("a" (my-refile "~/org/agenda/aquisition.org" "") "Refile to Acquisition")
+  ("f" (my-refile "~/org/agenda/finance.org" "") "Refile to Finance")
+  ("d" (my-refile "~/org/done.org" "") "Refile to Done")
+  ("n" next-line "Skip")
+  ("s" org-save-all-org-buffers "Save Org Buffers")
+  ("q" nil "cancel"))
 
 ;; Helm
 (global-set-key (kbd "M-x") #'helm-M-x)
