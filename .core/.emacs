@@ -1,10 +1,33 @@
-;; General
+;; Packages
 (require 'package)
+(require 'cl)
 (package-initialize)
 
 (add-to-list 'package-archives
              '("melpa" . "http://stable.melpa.org/packages/") t)
 
+
+(defvar prelude-packages
+  '(magit hydra helm jade-mode))
+
+(defun prelude-packages-installed-p ()
+  (loop for p in prelude-packages
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
+
+(unless (prelude-packages-installed-p)
+  ;; check for new packages (package versions)
+  (message "%s" "Emacs Prelude is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  ;; install the missing packages
+  (dolist (p prelude-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
+(provide 'prelude-packages)
+
+;; General
 (setq backup-directory-alist
   `((".*" . ,temporary-file-directory)))
 
