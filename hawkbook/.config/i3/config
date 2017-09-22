@@ -162,6 +162,6 @@ workspace_layout stacking
 bindsym $mod+i exec --no-startup-id i3lock
 bindsym $mod+n exec --no-startup-id chromium-browser
 bindsym $mod+o exec --no-startup-id emacs
-bindsym $mod+m exec --no-startup-id matlab
+bindsym $mod+m exec --no-startup-id matlab -desktop
 
 exec --no-startup-id xsetroot -solid "#000000"

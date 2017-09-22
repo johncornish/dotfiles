@@ -8,7 +8,7 @@
 
 
 (defvar prelude-packages
-  '(magit hydra helm jade-mode))
+  '(magit hydra helm jade-mode multiple-cursors))
 
 (defun prelude-packages-installed-p ()
   (loop for p in prelude-packages
@@ -104,6 +104,19 @@
     (org-refile arg nil (list headline file nil pos)))
   (switch-to-buffer (current-buffer)))
 
+(defun sync-s3-up ()
+    (message (shell-command-to-string "aws s3 sync ~/org s3://org.s3.johncorni.sh --delete")))
+
+(defun sync-s3-down ()
+    (message (shell-command-to-string "aws s3 sync s3://org.s3.johncorni.sh ~/org --delete")))
+
+(defhydra hydra-s3-sync (nil nil)
+  "Syncing"
+  ("s" org-save-all-org-buffers "Save All Org Buffers")
+  ("u" (sync-s3-up) "Sync Up")
+  ("d" (sync-s3-down) "Sync Down")
+  ("q" hydra-refile/body "back to refile" :exit t))
+
 (defhydra hydra-refile (global-map "\C-cr")
   "Refile"
   ("c" (my-refile "~/org/agenda/class.org" "") "Refile to Class")
@@ -111,8 +124,8 @@
   ("f" (my-refile "~/org/agenda/finance.org" "") "Refile to Finance")
   ("d" (my-refile "~/org/done.org" "") "Refile to Done")
   ("n" next-line "Skip")
-  ("s" org-save-all-org-buffers "Save Org Buffers")
-  ("q" nil "cancel"))
+  ("s" hydra-s3-sync/body "S3 Sync" :exit t)
+  ("q" nil "cancel" :exit t))
 
 ;; Helm
 (global-set-key (kbd "M-x") #'helm-M-x)
