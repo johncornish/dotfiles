@@ -34,7 +34,7 @@ ethernet _first_ {
 
 battery 0 {
         format = "%percentage"
-	path = "/sys/class/power_supply/BATC/uevent"
+	path = "/sys/class/power_supply/BAT0/uevent"
 }
 
 run_watch DHCP {
