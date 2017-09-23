@@ -90,7 +90,7 @@
 (add-hook 'org-mode-hook 'auto-fill-mode)
 
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file "~/org/refile.org")
+      (quote (("t" "todo" entry (file "~/org/agenda/refile.org")
 	       "* TODO %?\n %i\n")
 	      ("j" "journal" entry (file+datetree "~/org/journal.org")
 	       "* Entered on %U\n %i\n%?\n"))))
@@ -105,10 +105,10 @@
   (switch-to-buffer (current-buffer)))
 
 (defun sync-s3-up ()
-    (message (shell-command-to-string "aws s3 sync ~/org s3://org.s3.johncorni.sh --delete")))
+    (message "%s" (shell-command-to-string "aws s3 sync ~/org s3://org.s3.johncorni.sh --delete")))
 
 (defun sync-s3-down ()
-    (message (shell-command-to-string "aws s3 sync s3://org.s3.johncorni.sh ~/org --delete")))
+    (message "%s" (shell-command-to-string "aws s3 sync s3://org.s3.johncorni.sh ~/org --delete")))
 
 (defhydra hydra-s3-sync (nil nil)
   "Syncing"
