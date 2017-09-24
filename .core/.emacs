@@ -8,7 +8,7 @@
 
 
 (defvar prelude-packages
-  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell))
+  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree))
 
 (defun prelude-packages-installed-p ()
   (loop for p in prelude-packages
@@ -111,6 +111,8 @@
 (defun sync-s3-down ()
     (message "%s" (shell-command-to-string "aws s3 sync s3://org.s3.johncorni.sh ~/org --delete")))
 
+
+
 (defhydra hydra-s3-sync (nil nil)
   "Syncing"
   ("s" org-save-all-org-buffers "Save All Org Buffers")
@@ -145,7 +147,7 @@
   (when (eq major-mode `jade-mode)
     (message "%s" (shell-command-to-string (format "pug -P %s" buffer-file-name)))))
 
-;; (add-hook 'after-save-hook 'pug-compile)
+(add-hook 'after-save-hook 'pug-compile)
 
 ;; Multiple Cursors
 (global-set-key (kbd "C-c C-l") 'mc/edit-lines)
