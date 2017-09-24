@@ -8,7 +8,7 @@
 
 
 (defvar prelude-packages
-  '(magit hydra helm jade-mode multiple-cursors))
+  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell))
 
 (defun prelude-packages-installed-p ()
   (loop for p in prelude-packages
@@ -27,6 +27,9 @@
 
 (provide 'prelude-packages)
 
+;; Setting PATH correctly
+(exec-path-from-shell-initialize)
+
 ;; General
 (setq backup-directory-alist
   `((".*" . ,temporary-file-directory)))
@@ -43,8 +46,6 @@
 (global-set-key "\C-xt" '(lambda ()
 			   (interactive)
 			   (term (getenv "SHELL"))))
-
-(setenv "PATH" (concat (getenv "PATH") ":/home/cornish/.nvm/versions/node/v8.4.0/bin"))
 
 ;;(defun move-line-up ()
 ;;  (interactive)
@@ -142,9 +143,9 @@
 (defun pug-compile ()
   (interactive)
   (when (eq major-mode `jade-mode)
-    (shell-command-to-string (format "pug -P %s" buffer-file-name))))
+    (message "%s" (shell-command-to-string (format "pug -P %s" buffer-file-name)))))
 
-(add-hook 'after-save-hook 'pug-compile)
+;; (add-hook 'after-save-hook 'pug-compile)
 
 ;; Multiple Cursors
 (global-set-key (kbd "C-c C-l") 'mc/edit-lines)
