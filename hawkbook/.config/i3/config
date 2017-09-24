@@ -165,3 +165,6 @@ bindsym $mod+o exec --no-startup-id emacs
 bindsym $mod+m exec --no-startup-id matlab -desktop
 
 exec --no-startup-id xsetroot -solid "#000000"
+
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10"
+bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10"
