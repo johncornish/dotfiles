@@ -56,3 +56,11 @@ load {
 disk "/home" {
         format = "%avail"
 }
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
