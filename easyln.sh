@@ -1,5 +1,5 @@
 #! /bin/bash
-for f in $(find $1 -mindepth 1 -type f);
+for f in $(find $1 -type f -not -path "$1/_root/*");
 do
     dn=$(dirname $f)
     dn=${dn#$1}
