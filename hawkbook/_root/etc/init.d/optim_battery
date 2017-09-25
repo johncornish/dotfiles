@@ -1,0 +1,13 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          optim_battery
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     5
+# Default-Stop:      0 1 6
+# Description:       <DESCRIPTION>
+### END INIT INFO
+
+# service bluetooth stop
+synclient PalmDetect=1
+powertop --auto-tune
