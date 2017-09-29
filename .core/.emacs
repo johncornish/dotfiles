@@ -8,7 +8,7 @@
 
 
 (defvar prelude-packages
-  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree))
+  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme))
 
 (defun prelude-packages-installed-p ()
   (loop for p in prelude-packages
@@ -30,18 +30,34 @@
 ;; Setting PATH correctly
 (exec-path-from-shell-initialize)
 
+;; UI
+(setq inhibit-splash-screen t)
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (toxi)))
+ '(custom-safe-themes
+   (quote
+    ("d71af91a5c31ad4f8b751a3d5aa4104e705890bb5845faf78ae81c8309f38ed3" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
 ;; General
 (setq backup-directory-alist
   `((".*" . ,temporary-file-directory)))
 
 (setq auto-save-file-name-transforms
   `((".*" ,temporary-file-directory t)))
-
-(setq inhibit-splash-screen t)
-
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-
 
 (global-set-key "\C-xt" '(lambda ()
 			   (interactive)
@@ -163,3 +179,4 @@
 	  ("\\section\{%s\}" . "\\section*\{%s\}")
 	  ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
 	  ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+
