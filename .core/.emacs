@@ -180,3 +180,5 @@
 	  ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
 	  ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
 
+;; Neotree
+(setq neo-theme 'arrow)
