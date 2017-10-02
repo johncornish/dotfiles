@@ -8,7 +8,7 @@
 
 
 (defvar prelude-packages
-  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme))
+  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme evil))
 
 (defun prelude-packages-installed-p ()
   (loop for p in prelude-packages
@@ -51,6 +51,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(evil-mode 1)
+
+(global-set-key "\C-ce" 'electric-pair-mode)
 
 ;; General
 (setq backup-directory-alist
@@ -138,9 +142,11 @@
 
 (defhydra hydra-refile (global-map "\C-cr")
   "Refile"
-  ("c" (my-refile "~/org/agenda/class.org" "") "Refile to Class")
-  ("a" (my-refile "~/org/agenda/aquisition.org" "") "Refile to Acquisition")
-  ("f" (my-refile "~/org/agenda/finance.org" "") "Refile to Finance")
+  ("a" (my-refile "~/org/agenda/aquisition.org" "") "Acquisition")
+  ("c" (my-refile "~/org/agenda/class.org" "") "Class")
+  ("f" (my-refile "~/org/agenda/finance.org" "") "Finance")
+  ("r" (my-refile "~/org/agenda/rnd.org" "") "R&D")
+  ("u" (my-refile "~/org/agenda/upkeep.org" "") "Upkeep")
   ("d" (my-refile "~/org/done.org" "") "Refile to Done")
   ("n" next-line "Skip")
   ("s" hydra-s3-sync/body "S3 Sync" :exit t)
@@ -158,6 +164,9 @@
 (add-to-list 'auto-mode-alist
 	     '("\\.pug\\'" . (lambda ()
 			       (jade-mode))))
+(add-to-list 'auto-mode-alist
+	     '("\\.m\\'" . (lambda ()
+			       (octave-mode))))
 (defun pug-compile ()
   (interactive)
   (when (eq major-mode `jade-mode)
@@ -180,5 +189,17 @@
 	  ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
 	  ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
 
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list
+		'("PDF LaTeX" "pdflatex %t" TeX-run-TeX)))
+
+(setq TeX-command-default "PDF LaTeX")
+
 ;; Neotree
+(global-set-key (kbd "<f8>") 'neotree-toggle)
 (setq neo-theme 'arrow)
+
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)

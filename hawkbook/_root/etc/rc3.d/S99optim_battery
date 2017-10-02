@@ -1,0 +1,5 @@
+#! /bin/sh
+powertop --auto-tune > /home/hawkens/rc.log &> /home/hawkens/rcerr.log
+service bluetooth stop >> /home/hawkens/rc.log &>> /home/hawkens/rcerr.log
+synclient PalmDetect=1 >> /home/hawkens/rc.log &>> /home/hawkens/rcerr.log
+

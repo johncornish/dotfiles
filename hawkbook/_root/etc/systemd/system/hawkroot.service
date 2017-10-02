@@ -1,0 +1,9 @@
+[Unit]
+Description=Startup stuff for Hawkbook
+
+[Service]
+User=root
+ExecStart=/home/hawkens/startup/hawkroot.sh
+
+[Install]
+WantedBy=multi-user.target
