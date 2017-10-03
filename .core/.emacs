@@ -53,6 +53,7 @@
  )
 
 (evil-mode 1)
+(electric-pair-mode 1)
 
 (global-set-key "\C-ce" 'electric-pair-mode)
 
@@ -199,7 +200,11 @@
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 (setq neo-theme 'arrow)
 
+;; Evil
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+
+(define-key evil-normal-state-map "zh" 'split-window-horizontally)
+(define-key evil-normal-state-map "zv" 'split-window-vertically)
