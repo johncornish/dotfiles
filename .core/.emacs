@@ -32,6 +32,7 @@
 
 ;; UI
 (global-flycheck-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 (setq inhibit-splash-screen t)
 
 (menu-bar-mode -1)
@@ -68,6 +69,9 @@
 (global-set-key "\C-xt" '(lambda ()
 			   (interactive)
 			   (term (getenv "SHELL"))))
+
+;; Flycheck
+(setq flycheck-python-pycompile-executable "python3")
 
 ;;(defun move-line-up ()
 ;;  (interactive)
