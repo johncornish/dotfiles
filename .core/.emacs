@@ -58,6 +58,7 @@
 (electric-pair-mode 1)
 
 (global-set-key "\C-ce" 'electric-pair-mode)
+(global-set-key "\C-cy" 'yaml-mode)
 
 ;; General
 (setq backup-directory-alist
