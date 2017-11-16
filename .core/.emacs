@@ -8,7 +8,7 @@
 
 
 (defvar prelude-packages
-  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme evil company yaml-mode auctex flycheck))
+  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme evil company yaml-mode auctex flycheck markdown-mode))
 
 (defun prelude-packages-installed-p ()
   (loop for p in prelude-packages
@@ -120,8 +120,11 @@
 (setq org-capture-templates
       (quote (("t" "todo" entry (file "~/org/agenda/refile.org")
 	       "* TODO %?\n %i\n")
+	      ("b" "blog ideas" entry (file+datetree "~/org/blog.org")
+	       "* Entered on %U\n %i\n%?\n")
 	      ("j" "journal" entry (file+datetree "~/org/journal.org")
-	       "* Entered on %U\n %i\n%?\n"))))
+	       "* Entered on %U\n %i\n%?\n")
+	      )))
 
 ;; Refile
 (require 'hydra)
