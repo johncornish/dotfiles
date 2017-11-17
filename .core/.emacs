@@ -121,7 +121,7 @@
       (quote (("t" "todo" entry (file "~/org/agenda/refile.org")
 	       "* TODO %?\n %i\n")
 	      ("b" "blog ideas" entry (file "~/org/blog.org")
-	       "* TODO %?\n %i\n")
+	       "* %?\n %i\n")
 	      ("j" "journal" entry (file+datetree "~/org/journal.org")
 	       "* Entered on %U\n %i\n%?\n")
 	      )))
