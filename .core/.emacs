@@ -8,7 +8,7 @@
 
 
 (defvar prelude-packages
-  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme evil company yaml-mode auctex flycheck markdown-mode))
+  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme evil company yaml-mode auctex flycheck markdown-mode web-mode))
 
 (defun prelude-packages-installed-p ()
   (loop for p in prelude-packages
@@ -29,6 +29,9 @@
 
 ;; Setting PATH correctly
 (exec-path-from-shell-initialize)
+
+;; Fuck tabs
+(setq-default indent-tabs-mode nil)
 
 ;; UI
 (global-flycheck-mode)
