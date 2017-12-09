@@ -8,7 +8,7 @@
 
 
 (defvar prelude-packages
-  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme evil company yaml-mode auctex flycheck markdown-mode web-mode))
+  '(magit hydra helm jade-mode multiple-cursors exec-path-from-shell neotree toxi-theme evil company yaml-mode auctex flycheck markdown-mode web-mode linum-relative))
 
 (defun prelude-packages-installed-p ()
   (loop for p in prelude-packages
@@ -34,6 +34,10 @@
 (setq-default indent-tabs-mode nil)
 
 ;; UI
+(linum-mode)
+(linum-relative-global-mode)
+(setq linum-relative-current-symbol "")
+
 (global-flycheck-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq inhibit-splash-screen t)
