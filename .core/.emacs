@@ -53,7 +53,10 @@
  '(custom-enabled-themes (quote (toxi)))
  '(custom-safe-themes
    (quote
-    ("d71af91a5c31ad4f8b751a3d5aa4104e705890bb5845faf78ae81c8309f38ed3" default))))
+    ("d71af91a5c31ad4f8b751a3d5aa4104e705890bb5845faf78ae81c8309f38ed3" default)))
+ '(org-agenda-files
+   (quote
+    ("/home/hawkens/org/dev/scms.org" "/home/hawkens/org/agenda/class.org" "/home/hawkens/org/agenda/finance.org" "/home/hawkens/org/agenda/refile.org" "/home/hawkens/org/agenda/rnd.org" "/home/hawkens/org/agenda/upkeep.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
